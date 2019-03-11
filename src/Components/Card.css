@@ -2,11 +2,27 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  color: var(--text-color);
-  border: 1px solid var(--border-gray);
-  box-shadow: 0 0 5px var(--border-gray);
+  color: var(--background-gray);
+  box-shadow: 0 0 5px var(--dark-gray);
+}
+
+.header-card {
+  padding: var(--padding-large);
+  background-color: var(--dark-gray);
+  border: 1px solid var(--medium-gray);
 }
 
 .todo-card {
-  background-color: var(--card-default);
+  padding: var(--padding-small);
+  background-color: var(--medium-gray);
+  border: 1px solid var(--dark-gray);
+}
+
+.add-container__button {
+  border: none;
+  color: var(--dark-gray);
+  font-size: 1rem;
+  cursor: pointer;
+  background: var(--background-gray);
+  margin: var(--margin-small);
 }

@@ -1,41 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { TodoCard, HeaderCard } from './Components/Card';
-
-const todoData = {
-  notStarted: {
-    header: 'Not Started',
-    color: 'var(--card-blue)',
-    todos: [{ text: 'Do laundry' }, { text: 'Take out the trash' }]
-  },
-  inProgress: {
-    header: 'In Progress',
-    color: 'var(--card-green)',
-    todos: [{ text: 'Wash Car' }, { text: 'Clean House' }]
-  },
-  done: {
-    header: 'Done',
-    color: 'var(--card-red)',
-    todos: [{ text: 'Procrastinate' }, { text: 'Write Poetry' }]
-  },
-  prioritized: {
-    header: 'Prioritized',
-    color: 'var(--card-yellow)',
-    todos: [{ text: 'Sunbathing' }, { text: 'Shopping' }]
-  }
-};
-
-const AddTodo = props => {
-  const { 'data-ref': ref, onClick } = props;
-  return (
-    <div className="add-container">
-      <button type="button" onClick={() => onClick(ref)}>
-        + Add Todo
-      </button>
-    </div>
-  );
-};
+import { TodoCard, HeaderCard, AddTodo } from './Components/Card';
+import defaultTodoData from './Config';
 
 class App extends Component {
   constructor(props) {
@@ -44,7 +11,7 @@ class App extends Component {
     if (stored) {
       this.state = JSON.parse(stored);
     } else {
-      this.state = todoData;
+      this.state = defaultTodoData;
     }
   }
 
@@ -53,7 +20,10 @@ class App extends Component {
   }
 
   addTodo = ref => {
-    const newTodo = window.prompt(`Enter a string for category ${ref}`);
+    const promptMessage = `Enter a new todo for category: ${ref
+      .charAt(0)
+      .toUpperCase() + ref.slice(1)}`;
+    const newTodo = window.prompt(promptMessage);
 
     if (newTodo) {
       const added = {
@@ -70,20 +40,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <main className="main">
+        <main className="container">
           {Object.keys(this.state).map(key => {
-            const { header, color, todos } = this.state[key];
-
-            const TodoList = todos.map(todo => {
-              const { text } = todo;
-              return <TodoCard key={text} text={text} />;
-            });
+            // eslint-disable-next-line react/destructuring-assignment
+            const { header, todos } = this.state[key];
 
             return (
               <div className="column" key={key}>
-                <HeaderCard text={header} color={color} />
+                <HeaderCard text={header} />
                 <div className="body">
-                  <div className="todo-list">{TodoList}</div>
+                  <div className="todo-list">
+                    {todos.map(({ text }) => (
+                      <TodoCard key={text} text={text} />
+                    ))}
+                  </div>
                 </div>
                 <AddTodo data-ref={key} onClick={this.addTodo} />
               </div>

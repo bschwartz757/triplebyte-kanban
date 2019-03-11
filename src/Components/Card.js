@@ -11,10 +11,25 @@ export const TodoCard = ({ text }) => {
   );
 };
 
-export const HeaderCard = ({ text, color }) => {
+export const HeaderCard = ({ text }) => {
   return (
-    <div className="card" style={{ background: color }}>
+    <div className="card header-card">
       <h1>{text}</h1>
+    </div>
+  );
+};
+
+export const AddTodo = props => {
+  const { 'data-ref': ref, onClick } = props;
+  return (
+    <div className="add-container">
+      <button
+        type="button"
+        className="add-container__button"
+        onClick={() => onClick(ref)}
+      >
+        + Add Todo
+      </button>
     </div>
   );
 };

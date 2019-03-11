@@ -12,20 +12,17 @@
   --padding-small: 0.5rem;
   --margin-large: 1.5rem;
   --margin-medium: 1rem;
-  --padding-small: 0.5rem;
-  --gridgap-large: 1.5rem;
-  --gridgap-medium: 1rem;
-  --gridgap-small: 0.5rem;
+  --margin-small: 0.5rem;
+  --grid-gap-large: 1.5rem;
+  --grid-gap-medium: 1rem;
+  --grid-gap-small: 0.5rem;
   /* Basic color palette */
   --background-gray: #f0f4f8;
-  --border-gray: #243b53;
-  --card-blue: #2bb0ed;
-  --card-green: #199473;
-  --card-red: #ef4e4e;
-  --card-yellow: #f7c948;
-  --card-default: #9fb3c8;
-  --text-color: whitesmoke;
-  --black: #272727;
+  --dark-gray: #243b53;
+  --medium-gray: #829ab1;
+  /* Fonts */
+  --header-font-weight: 500;
+  --body-font-weight: 300;
 }
 
 html {
@@ -34,9 +31,9 @@ html {
   /* A system font stack so things load nice and quick! */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  font-weight: 900;
+  font-weight: var(--body-font-weight);
   font-size: 16px;
-  color: var(--black);
+  color: var(--dark-gray);
 }
 
 /*
@@ -60,15 +57,9 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 5px 0;
+  margin: 0 0;
 }
 
 main {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: var(--grid-gap-medium);
-  padding: var(--padding-large);
-}
-
-div {
+  height: 100%;
 }
