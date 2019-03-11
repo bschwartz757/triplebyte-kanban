@@ -1,24 +1,7 @@
-html {
-  background: white
-}
-
-main {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-  background: gray;
-  border: 1px solid red;
-}
-
-div {
-  border: 1px solid black;
-  height: 100%;
-  width: 100%;
-}
-
 .column {
   display: grid;
-  grid-template-rows: 1fr;
+  grid-auto-rows: 1fr;
+  grid-gap: var(--grid-gap-medium);
 }
 
 .todo-list {

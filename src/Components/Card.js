@@ -1,15 +1,20 @@
 import React from 'react';
 import './Card.css';
 
-const Card = ({header, text}) => {
+export const TodoCard = ({ text }) => {
   return (
-    <div className="todo-card">
-      <h1>{header}</h1>
-      <article className="card-body">
+    <div className="card todo-card">
+      <article>
         <p>{text}</p>
       </article>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export const HeaderCard = ({ text, color }) => {
+  return (
+    <div className="card" style={{ background: color }}>
+      <h1>{text}</h1>
+    </div>
+  );
+};
