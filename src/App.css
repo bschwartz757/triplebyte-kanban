@@ -5,12 +5,6 @@
   padding: var(--padding-large);
 }
 
-.column {
-  display: grid;
-  grid-template-rows: 10vh auto;
-  grid-gap: var(--grid-gap-medium);
-}
-
 .todo-list {
   display: grid;
   grid-template-rows: 1fr;

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { TodoCard, HeaderCard, AddTodo } from './Components/Card';
 import defaultTodoData from './Config';
+import DndContainer from './Components/Dnd';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    const stored = localStorage.getItem('todo');
+    const stored = localStorage.getItem('todoItems');
     if (stored) {
       this.state = JSON.parse(stored);
     } else {
@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   componentDidUpdate(props, state) {
-    localStorage.setItem('todo', JSON.stringify(state));
+    localStorage.setItem('todoItems', JSON.stringify(state));
   }
 
   addTodo = ref => {
@@ -41,24 +41,7 @@ class App extends Component {
     return (
       <div className="App">
         <main className="container">
-          {Object.keys(this.state).map(key => {
-            // eslint-disable-next-line react/destructuring-assignment
-            const { header, todos } = this.state[key];
-
-            return (
-              <div className="column" key={key}>
-                <HeaderCard text={header} />
-                <div className="body">
-                  <div className="todo-list">
-                    {todos.map(({ text }) => (
-                      <TodoCard key={text} text={text} />
-                    ))}
-                  </div>
-                </div>
-                <AddTodo data-ref={key} onClick={this.addTodo} />
-              </div>
-            );
-          })}
+          <DndContainer {...this.state} addTodo={this.addTodo} />
         </main>
       </div>
     );
